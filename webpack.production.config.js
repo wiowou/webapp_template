@@ -65,7 +65,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      chunks: ['index', 'vendors~index'],
+      chunks: ['index', 'vendors_index'],
       title: 'Hello world',
       template: 'src/page-template.html',
       description: 'Hello World'
