@@ -7,15 +7,9 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "hello-world-launch",
-      "file": "${workspaceFolder}/dist/hello-world.html",
-      "runtimeExecutable": "/usr/bin/chromium"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "kiwi-launch",
-      "file": "${workspaceFolder}/dist/kiwi.html",
+      "name": "index-launch",
+      "file": "${workspaceFolder}/dist/index.html",
+      //"file": "/home/bk/src/webapp_template/dist/index.html",
       "runtimeExecutable": "/usr/bin/chromium"
     }
   ]

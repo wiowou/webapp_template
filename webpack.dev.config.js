@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    'hello-world': './src/hello-world.js',
-    'kiwi': './src/kiwi.js'
+    'index': './src/index.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -60,18 +59,11 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
-      filename: 'hello-world.html',
-      chunks: ['hello-world'],
+      filename: 'index.html',
+      chunks: ['index'],
       title: 'Hello world',
       template: 'src/page-template.html',
       description: 'Hello World'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'kiwi.html',
-      chunks: ['kiwi'],
-      title: 'Kiwi',
-      template: 'src/page-template.html',
-      description: 'Kiwi'
     })
   ]
 };
