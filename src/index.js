@@ -1,6 +1,8 @@
 import HelloWorldButton from './components/hello-world-button/hello-world-button.js';
 import Heading from './components/heading/heading.js';
 import KiwiImage from './components/kiwi-image/kiwi-image.js';
+import 'bootstrap'; //imports the javascript from bootstrap
+import './index.scss';
 //import React from 'react';
 
 const heading = new Heading();
