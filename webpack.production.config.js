@@ -4,84 +4,100 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    'index': './src/index.js'
-  },
-  output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: ''
-  },
-  mode: 'production',
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      minSize: 8000,
-      automaticNameDelimiter: '_'
-    }
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(png|jpg)$/,
-        use: [
-          'file-loader'
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  require('precss'),
-                  require('autoprefixer')
-                ];
-              }
-            }
-          },
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/env'],
-            plugins: ['transform-class-properties']
-          }
-        }
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
-    }),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        '**/*',
-        path.join(process.cwd(), 'dist/**/*')
-      ]
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      chunks: ['index', 'vendors_index'],
-      title: 'Hello world',
-      template: 'src/page-template.html',
-      description: 'Hello World'
-    })
-  ]
+	entry: {
+		'index': './src/index.js'
+	},
+	output: {
+		filename: '[name].[contenthash].js',
+		path: path.resolve(__dirname, './dist'),
+		publicPath: ''
+	},
+	mode: 'production',
+	optimization: {
+		splitChunks: {
+			chunks: "all",
+			minSize: 8000,
+			automaticNameDelimiter: '_'
+		}
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(png|jpg|gif|svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[hash].[ext]'
+				}
+			},
+			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader, 'css-loader'
+				]
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: function () {
+								return [
+									require('precss'),
+									require('autoprefixer')
+								];
+							}
+						}
+					},
+					'sass-loader'
+				]
+			},
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/env'],
+						plugins: ['transform-class-properties']
+					}
+				}
+			},
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					loaders: {
+					}
+					// other vue-loader options go here
+				}
+			}
+		]
+	},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: '[name].[contenthash].css'
+		}),
+		new CleanWebpackPlugin({
+			cleanOnceBeforeBuildPatterns: [
+				'**/*',
+				path.join(process.cwd(), 'dist/**/*')
+			]
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			chunks: ['index', 'vendors_index'],
+			title: 'Hello world',
+			template: 'src/page-template.html',
+			description: 'Hello World'
+		})
+	],
+	resolve: {
+		alias: {
+			'vue$': 'vue/dist/vue.esm.js'
+		},
+		extensions: ['*', '.js', '.vue', '.json']
+	}
 };
