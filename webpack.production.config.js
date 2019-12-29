@@ -2,11 +2,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require("vue-loader");
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
 	entry: {
-		'index': './src/index.js'
+		index: './src/index.js'
 	},
 	output: {
 		filename: '[name].[contenthash].js',
@@ -16,7 +16,7 @@ module.exports = {
 	mode: 'production',
 	optimization: {
 		splitChunks: {
-			chunks: "all",
+			chunks: 'all',
 			minSize: 8000,
 			automaticNameDelimiter: '_'
 		}
@@ -32,9 +32,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [
-					MiniCssExtractPlugin.loader, 'css-loader'
-				]
+				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
 			{
 				test: /\.scss$/,
@@ -44,7 +42,7 @@ module.exports = {
 					{
 						loader: 'postcss-loader',
 						options: {
-							plugins: function () {
+							plugins: function() {
 								return [
 									require('precss'),
 									require('autoprefixer')
@@ -59,19 +57,14 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/env'],
-						plugins: ['transform-class-properties']
-					}
+					loader: 'babel-loader'
 				}
 			},
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
-					loaders: {
-					}
+					loaders: {}
 					// other vue-loader options go here
 				}
 			}
@@ -98,7 +91,7 @@ module.exports = {
 	],
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js'
+			vue$: 'vue/dist/vue.esm.js'
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	}
