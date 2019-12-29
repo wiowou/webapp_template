@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import App from './components/App.vue';
+import 'bootstrap'; //imports the javascript from bootstrap
+import './index.scss';
 
 new Vue({
 	el: '#app',
