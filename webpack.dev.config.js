@@ -1,11 +1,11 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require("vue-loader");
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
 	entry: {
-		'index': './src/index.js'
+		index: './src/index.js'
 	},
 	output: {
 		filename: '[name].bundle.js',
@@ -30,33 +30,39 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [
-					'style-loader', 'css-loader'
-				]
+				use: ['style-loader', 'css-loader']
 			},
 			{
 				test: /\.scss$/,
-				use: [
-					'style-loader', 'css-loader', 'sass-loader'
-				]
+				use: ['style-loader', 'css-loader', 'sass-loader']
 			},
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/env'],
-						plugins: ['transform-class-properties']
-					}
+					loader: 'babel-loader'
+					// options: {
+					// 	presets: ['@babel/env'],
+					// 	plugins: [
+					// 		'@babel/plugin-proposal-object-rest-spread',
+					// 		'@babel/plugin-proposal-unicode-property-regex',
+					// 		'@babel/plugin-transform-dotall-regex',
+					// 		[
+					// 			'@babel/plugin-proposal-class-properties',
+					// 			{ loose: false }
+					// 		],
+					// 		'@babel/plugin-proposal-json-strings',
+					// 		'@babel/plugin-syntax-dynamic-import',
+					// 		'@babel/plugin-syntax-import-meta'
+					// 	]
+					// }
 				}
 			},
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: {
-					loaders: {
-					}
+					loaders: {}
 					// other vue-loader options go here
 				}
 			}
@@ -80,7 +86,7 @@ module.exports = {
 	],
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js'
+			vue$: 'vue/dist/vue.esm.js'
 		},
 		extensions: ['*', '.js', '.vue', '.json']
 	}
