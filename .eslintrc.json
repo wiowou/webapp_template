@@ -7,7 +7,7 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:prettier/recommended",
-		"plugin:vue/recommended"
+		"plugin:vue/strongly-recommended"
 	],
 	"globals": {
 		"Atomics": "readonly",
@@ -29,6 +29,16 @@
 				"closeBracket": 0,
 				"alignAttributesVertically": true,
 				"ignores": []
+			}
+		],
+		"vue/max-attributes-per-line": [
+			"error",
+			{
+				"singleline": 100,
+				"multiline": {
+					"max": 100,
+					"allowFirstLine": true
+				}
 			}
 		]
 	}
