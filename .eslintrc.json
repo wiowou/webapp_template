@@ -34,11 +34,23 @@
 		"vue/max-attributes-per-line": [
 			"error",
 			{
-				"singleline": 100,
+				"singleline": 8,
 				"multiline": {
-					"max": 100,
+					"max": 8,
 					"allowFirstLine": true
 				}
+			}
+		],
+		"vue/html-self-closing": [
+			"error",
+			{
+				"html": {
+					"void": "any",
+					"normal": "never",
+					"component": "always"
+				},
+				"svg": "always",
+				"math": "always"
 			}
 		]
 	}
